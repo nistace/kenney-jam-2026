@@ -8,3 +8,6 @@
 /.idea/
 *.csproj
 *.sln
+
+
+Assets/KenneyAssets/*/*/*
