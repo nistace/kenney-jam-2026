@@ -19,5 +19,7 @@ namespace KenneyJam2026.Interactables
 
             OnIsOnChanged?.Invoke(_isOn);
         }
+
+        public void StopInteraction() { }
     }
 }

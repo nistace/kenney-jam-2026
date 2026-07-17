@@ -5,5 +5,6 @@
         InteractableType Type { get; }
 
         void Interact();
+        void StopInteraction();
     }
 }

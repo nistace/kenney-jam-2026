@@ -1,4 +1,4 @@
-﻿using System;
+﻿using KenneyJam2026.Interactables;
 using KenneyJam2026.Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,17 +9,25 @@ namespace KenneyJam2026.PlayerUI
     {
         [SerializeField] private Image _displayImage;
         [SerializeField] private PlayerAimDetector _aimDetector;
+        [SerializeField] private PlayerDragger _dragger;
+        [SerializeField] private InteractableType _draggingInteractionType;
 
         private void Update()
         {
-            _displayImage.enabled = _aimDetector && _aimDetector.AimedInteractable is { Type: { HasCursorSprites: true } };
-
-            if (!_displayImage.enabled)
+            if (_dragger && _dragger.IsDragging)
             {
-                return;
+                _displayImage.overrideSprite = _draggingInteractionType.GetTimedCursorSprite();
+            }
+            else if (_aimDetector && _aimDetector.AimedInteractable is { Type: { HasCursorSprites: true } })
+            {
+                _displayImage.overrideSprite = _aimDetector.AimedInteractable.Type.GetTimedCursorSprite();
+            }
+            else
+            {
+                _displayImage.overrideSprite = null;
             }
 
-            _displayImage.sprite = _aimDetector.AimedInteractable.Type.GetTimedCursorSprite();
+            _displayImage.enabled = _displayImage.overrideSprite;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using KenneyJam2026.Interactables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,11 @@ namespace KenneyJam2026.Player
         [SerializeField] private PlayerAimDetector _detector;
         [SerializeField] private InputActionReference _interactActionReference;
 
-        private bool IsInteracting { get; set; }
+        private IInteractable _currentInteractable;
+        private bool IsInteracting => _currentInteractable != null;
+
+        public event Action<IInteractable> OnInteractionStarted;
+        public event Action<IInteractable> OnInteractionEnded;
 
         private void OnEnable()
         {
@@ -25,11 +30,30 @@ namespace KenneyJam2026.Player
             _interactActionReference.action.canceled -= HandleInteractCancelled;
         }
 
-        private void HandleInteractCancelled(InputAction.CallbackContext obj) { }
+        private void HandleInteractCancelled(InputAction.CallbackContext obj)
+        {
+            if (_currentInteractable == null)
+            {
+                return;
+            }
+
+            var interactable = _currentInteractable;
+            _currentInteractable.StopInteraction();
+            _currentInteractable = null;
+
+            OnInteractionEnded?.Invoke(interactable);
+        }
 
         private void HandleInteractPerformed(InputAction.CallbackContext obj)
         {
-            _detector.AimedInteractable?.Interact();
+            if (_detector.AimedInteractable == null)
+            {
+                return;
+            }
+
+            _currentInteractable = _detector.AimedInteractable;
+            _currentInteractable.Interact();
+            OnInteractionStarted?.Invoke(_currentInteractable);
         }
     }
 }
