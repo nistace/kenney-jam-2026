@@ -1,12 +1,22 @@
 ﻿# TODO
 
-## Scale
-
-- Give a default rotation to objects so that they stop rotating indefinitely
-
 ## Window
 
 - Drag the window to open or close it.
+
+## NPCs
+
+- Add NPCs in a line outside the window
+- NPCs request milk and a reference of the quantity that they want.
+- Add sound effects
+
+## TV
+
+- TV should show some weight equations
+
+## Scale
+
+- Give a default rotation to objects so that they stop rotating indefinitely
 
 ## Milk
 
@@ -17,12 +27,6 @@
 
 - Add a bin to get rid of trash
 - Respawn stuff so that we get an infinite loop
-
-## NPCs
-
-- Add NPCs in a line outside the window
-- NPCs request milk and a reference of the quantity that they want.
-- Add sound effects
 
 ## Radio
 
