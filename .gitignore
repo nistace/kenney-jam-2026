@@ -11,3 +11,6 @@
 
 
 Assets/KenneyAssets/*/*/*
+*.sln.DotSettings.user
+Packages/com.lunawolfstudios.scriptablesheets/Editor/*
+Packages/com.lunawolfstudios.scriptablesheets/Editor.meta
