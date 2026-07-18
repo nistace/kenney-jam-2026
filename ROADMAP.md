@@ -1,14 +1,5 @@
 ﻿# TODO
 
-## NPCs
-
-- Add NPCs in a line outside the window
-- NPCs request milk and a reference of the quantity that they want.
-- Add sound effects
-
-## TV
-
-- TV should show some weight equations
 
 ## Scale
 
@@ -24,6 +15,26 @@
 - Add a bin to get rid of trash
 - Respawn stuff so that we get an infinite loop
 
+## Score
+
+- Add stars on the door that get unlocked whenever a NPC of a given level is delivered.
+- Start with level 1 NPCs in the bank. When one is satisfied, unlock level 2s, etc.
+
+## The Door
+
+- Add short animation of the player entering the room.
+- Implement the key to drag on the lock of the door to exit the game
+- Exiting the game triggers an animation of opening the door, with a cow and a heart emote to thank the player for playing.
+
+## NPCs
+
+- Add animations
+- Add sound effects
+
+## TV
+
+- TV should show some weight equations
+
 ## Radio
 
 - Add music
@@ -33,7 +44,3 @@
 ## SFX
 
 - Do a pass on all SFX
-
-## Door
-
-- Drag the key into the door lock to exit the game
