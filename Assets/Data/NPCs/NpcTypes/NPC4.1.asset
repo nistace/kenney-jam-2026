@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de33ee747ea64055a77d6c975485064d, type: 3}
+  m_Name: NPC4.1
+  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.NpcType
+  _modelPrefab: {fileID: 919132149155446097, guid: e49cf2b5be46ae14795facef9101b97d, type: 3}
+  _possibleExpectedQuantities:
+  - {fileID: 11400000, guid: 9ad2d85e35111454e85613e9f6f6c27c, type: 2}
+  - {fileID: 11400000, guid: 7f0c3111a3b15ba4098f339763ee6913, type: 2}
+  _level: 4
+  _movementSpeed: 5
+  _scale: 2.5
+  _maxDurationInLine: 240
+  _delayBeforeKnocking: 5
+  _messageWhileKnocking: {fileID: 11400000, guid: 0699d2277137a8a4997aba04a1b74bbc, type: 2}
+  _maxDurationKnocking: 10
+  _askMilkMessage: {fileID: 11400000, guid: 311bbe3c045b2da44a9eb7e0535b2927, type: 2}
+  _messageWhileCancelling: {fileID: 11400000, guid: 4255b6aa88f66c5449fc58b8ca82f096, type: 2}
+  _cancelRequestDuration: 1

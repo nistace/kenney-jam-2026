@@ -7,14 +7,19 @@ namespace KenneyJam2026.Interactables
     {
         [SerializeField] private Sprite[] _uiSprites;
         [SerializeField] private float _uiSpritesSpeed = 2;
+        [SerializeField] private Sprite[] _uiSecondarySprites;
+        [SerializeField] private float _uiSecondarySpritesSpeed = 2;
 
         public bool HasCursorSprites => _uiSprites is { Length: > 0 };
 
-        public Sprite GetTimedCursorSprite()
-        {
-            if (!HasCursorSprites) return default;
+        public Sprite GetTimedCursorSprite() => GetTimedSprite(_uiSprites, _uiSpritesSpeed);
+        public Sprite GetTimedSecondaryCursorSprite() => GetTimedSprite(_uiSecondarySprites, _uiSecondarySpritesSpeed);
 
-            return _uiSprites[Mathf.Clamp(Mathf.FloorToInt(Time.time * _uiSpritesSpeed % _uiSprites.Length), 0, _uiSprites.Length - 1)];
+        private static Sprite GetTimedSprite(Sprite[] _series, float speed)
+        {
+            if (_series == null || _series.Length == 0) return default;
+
+            return _series[Mathf.Clamp(Mathf.FloorToInt(Time.time * speed % _series.Length), 0, _series.Length - 1)];
         }
     }
 }

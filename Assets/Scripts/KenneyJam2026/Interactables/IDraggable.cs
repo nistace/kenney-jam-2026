@@ -9,6 +9,7 @@ namespace KenneyJam2026.Interactables
         public static int DragAimCatcherLayer => LayerMask.NameToLayer("DragAimCatcher");
         public static int DragAimCatcherLayerMask => 1 << DragAimCatcherLayer;
 
+        InteractableType DraggingInteractionType { get; }
         Vector3 Position { get; }
         Vector3 Velocity { get; set; }
 

@@ -8,26 +8,28 @@ namespace KenneyJam2026.PlayerUI
     public class InteractionDisplay : MonoBehaviour
     {
         [SerializeField] private Image _displayImage;
+        [SerializeField] private Image _secondaryDisplayImage;
         [SerializeField] private PlayerAimDetector _aimDetector;
         [SerializeField] private PlayerDragger _dragger;
-        [SerializeField] private InteractableType _draggingInteractionType;
 
         private void Update()
         {
+            InteractableType interactionType = default;
+
             if (_dragger && _dragger.IsDragging)
             {
-                _displayImage.overrideSprite = _draggingInteractionType.GetTimedCursorSprite();
+                interactionType = _dragger.DraggedObject.DraggingInteractionType;
             }
-            else if (_aimDetector && _aimDetector.AimedInteractable is { InteractableType: { HasCursorSprites: true } })
+            else if (_aimDetector && _aimDetector.AimedInteractable != null)
             {
-                _displayImage.overrideSprite = _aimDetector.AimedInteractable.InteractableType.GetTimedCursorSprite();
-            }
-            else
-            {
-                _displayImage.overrideSprite = null;
+                interactionType = _aimDetector.AimedInteractable.InteractableType;
             }
 
+            _displayImage.overrideSprite = interactionType?.GetTimedCursorSprite();
             _displayImage.enabled = _displayImage.overrideSprite;
+
+            _secondaryDisplayImage.overrideSprite = interactionType?.GetTimedSecondaryCursorSprite();
+            _secondaryDisplayImage.enabled = _secondaryDisplayImage.overrideSprite;
         }
     }
 }

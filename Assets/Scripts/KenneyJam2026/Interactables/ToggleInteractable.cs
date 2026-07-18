@@ -13,6 +13,8 @@ namespace KenneyJam2026.Interactables
 
         public event Action<bool> OnIsOnChanged;
 
+        public bool CanInteractWith(IDraggable heldObject) => heldObject == null;
+
         public void Interact(Vector3 atPosition)
         {
             _isOn = !_isOn;

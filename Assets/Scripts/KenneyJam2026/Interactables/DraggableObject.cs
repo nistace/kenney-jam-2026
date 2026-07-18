@@ -5,11 +5,12 @@ namespace KenneyJam2026.Interactables
     public class DraggableObject : MonoBehaviour, IDraggable
     {
         [SerializeField] private InteractableType _type;
+        [SerializeField] private InteractableType _draggingInteractionType;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private GameObject[] _interactableLayerObjects;
 
         public InteractableType InteractableType => _type;
-
+        public InteractableType DraggingInteractionType => _draggingInteractionType;
         public Vector3 Position => transform.position;
 
         public Vector3 Velocity
@@ -22,6 +23,8 @@ namespace KenneyJam2026.Interactables
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
+
+        public bool CanInteractWith(IDraggable heldObject) => heldObject == null;
 
         public void Interact(Vector3 atPosition)
         {

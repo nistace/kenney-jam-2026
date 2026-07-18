@@ -15,14 +15,14 @@ namespace KenneyJam2026.Player
         [SerializeField] private float _dropForce = 4;
         [SerializeField] private float _defaultLerpDistanceFromPlayer = .5f;
 
-        private IDraggable _draggedObject;
+        public IDraggable DraggedObject { get; private set; }
         private Vector3 _draggedObjectAcceleration;
         private LayerMask _previousHitLayerMask;
         private LayerMask _previousRelevantLayerMask;
 
         private readonly Dictionary<GameObject, PlayerDragAimCatcher> _aimCatchers = new();
 
-        public bool IsDragging => enabled && _draggedObject != null;
+        public bool IsDragging => enabled && DraggedObject != null;
 
         private void Start()
         {
@@ -46,15 +46,15 @@ namespace KenneyJam2026.Player
                 return;
             }
 
-            _draggedObject = draggable;
-            _draggedObject.SetOnDraggedLayer(true);
+            DraggedObject = draggable;
+            DraggedObject.SetOnDraggedLayer(true);
             _draggedObjectAcceleration = Vector3.zero;
 
             _previousHitLayerMask = _aimer.HitMask;
             _previousRelevantLayerMask = _aimer.RelevantMask;
 
-            _aimer.HitMask = _draggedObject.GetDraggedInteractionLayerMask(_previousHitLayerMask);
-            _aimer.RelevantMask = _draggedObject.GetDraggedInteractionLayerMask(_previousRelevantLayerMask);
+            _aimer.HitMask = DraggedObject.GetDraggedInteractionLayerMask(_previousHitLayerMask);
+            _aimer.RelevantMask = DraggedObject.GetDraggedInteractionLayerMask(_previousRelevantLayerMask);
 
             enabled = true;
 
@@ -64,10 +64,10 @@ namespace KenneyJam2026.Player
 
         private void HandleInteractionEnded(IInteractable interactable)
         {
-            if (!ReferenceEquals(interactable, _draggedObject)) return;
+            if (!ReferenceEquals(interactable, DraggedObject)) return;
 
-            _draggedObject.SetOnDraggedLayer(false);
-            _draggedObject.Release((_aimer.HitPosition - _draggedObject.Position) * _dropForce);
+            DraggedObject.SetOnDraggedLayer(false);
+            DraggedObject.Release((_aimer.HitPosition - DraggedObject.Position) * _dropForce);
 
             _aimer.HitMask = _previousHitLayerMask;
             _aimer.RelevantMask = _previousRelevantLayerMask;
@@ -106,13 +106,13 @@ namespace KenneyJam2026.Player
 
         private void Update()
         {
-            if (_draggedObject == null)
+            if (DraggedObject == null)
             {
                 enabled = false;
                 return;
             }
 
-            _draggedObject.Velocity = Vector3.SmoothDamp(_draggedObject.Velocity, (GetDraggedObjectTargetPosition() - _draggedObject.Position) * _stickyCoefficient, ref _draggedObjectAcceleration, _dampHardness, _maxSpeed);
+            DraggedObject.Velocity = Vector3.SmoothDamp(DraggedObject.Velocity, (GetDraggedObjectTargetPosition() - DraggedObject.Position) * _stickyCoefficient, ref _draggedObjectAcceleration, _dampHardness, _maxSpeed);
         }
 
         private void OnDrawGizmos()
