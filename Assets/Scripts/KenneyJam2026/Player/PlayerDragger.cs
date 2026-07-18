@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using KenneyJam2026.Interactables;
 using UnityEngine;
 
@@ -21,8 +22,10 @@ namespace KenneyJam2026.Player
         private LayerMask _previousRelevantLayerMask;
 
         private readonly Dictionary<GameObject, PlayerDragAimCatcher> _aimCatchers = new();
+        public event Action<IDraggable> OnDraggedObjectChanged;
 
         public bool IsDragging => enabled && DraggedObject != null;
+        public Vector3 DraggedObjectDesiredUp { get; set; } = Vector3.up;
 
         private void Start()
         {
@@ -63,6 +66,8 @@ namespace KenneyJam2026.Player
             _interactor.OnInteractionEnding += HandleInteractionEnding;
             _interactor.OnInteractionEnded -= HandleInteractionEnded;
             _interactor.OnInteractionEnded += HandleInteractionEnded;
+
+            OnDraggedObjectChanged?.Invoke(DraggedObject);
         }
 
         private void HandleInteractionEnding(IInteractable interactable)
@@ -90,6 +95,8 @@ namespace KenneyJam2026.Player
 
             DraggedObject = null;
             enabled = false;
+
+            OnDraggedObjectChanged?.Invoke(DraggedObject);
         }
 
         private bool TryGetDragAimCatcher(out PlayerDragAimCatcher aimCatcher)
@@ -98,13 +105,13 @@ namespace KenneyJam2026.Player
             {
                 if (_aimCatchers.TryGetValue(_aimer.AimedHit, out aimCatcher))
                 {
-                    return true;
+                    return aimCatcher;
                 }
 
                 aimCatcher = _aimer.AimedHit.GetComponent<PlayerDragAimCatcher>();
                 _aimCatchers.Add(_aimer.AimedHit, aimCatcher);
 
-                return true;
+                return aimCatcher;
             }
 
             aimCatcher = null;
@@ -130,15 +137,7 @@ namespace KenneyJam2026.Player
             }
 
             DraggedObject.Velocity = Vector3.SmoothDamp(DraggedObject.Velocity, (GetDraggedObjectTargetPosition() - DraggedObject.Position) * _stickyCoefficient, ref _draggedObjectAcceleration, _dampHardness, _maxSpeed);
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (!_aimer) return;
-            if (!_playerLookOrigin) return;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(GetDraggedObjectTargetPosition(), .1f);
+            DraggedObject.RotateToPosition(_playerLookOrigin.forward, DraggedObjectDesiredUp);
         }
     }
 }

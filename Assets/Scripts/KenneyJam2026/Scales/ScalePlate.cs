@@ -13,7 +13,7 @@ namespace KenneyJam2026.Scales
 
             foreach (var weighingObject in _collisionTracker.GetStackOfWeighingObjects())
             {
-                totalWeight += weighingObject.Weight;
+                totalWeight += weighingObject.TotalWeight;
             }
 
             return totalWeight;

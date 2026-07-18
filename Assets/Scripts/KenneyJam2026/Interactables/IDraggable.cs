@@ -19,5 +19,6 @@ namespace KenneyJam2026.Interactables
         void Release(Vector3 intendedForce);
         void SetOnDraggedLayer(bool value);
         LayerMask GetDraggedInteractionLayerMask(LayerMask currentLayerMask);
+        void RotateToPosition(Vector3 forward, Vector3 up);
     }
 }

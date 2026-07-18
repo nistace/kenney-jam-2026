@@ -64,7 +64,7 @@ namespace KenneyJam2026.Interactables
         }
 
         public LayerMask GetDraggedInteractionLayerMask(LayerMask currentLayerMask) => IDraggable.DragAimCatcherLayerMask;
-
+        public void RotateToPosition(Vector3 forward, Vector3 up) { }
         public void Release(Vector3 intendedForce) { }
 
         private void FixedUpdate()

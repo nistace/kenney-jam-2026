@@ -22,7 +22,7 @@ namespace KenneyJam2026.Scales
 
         private void OnCollisionExit(Collision other)
         {
-            if (!_touchingColliders.Remove(other.collider)) return;
+            _touchingColliders.Remove(other.collider);
         }
 
         public IReadOnlyCollection<WeighingObject> GetStackOfWeighingObjects()
