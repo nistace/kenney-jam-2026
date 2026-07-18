@@ -1,4 +1,5 @@
 ﻿using KenneyJam2026.Interactables;
+using KenneyJam2026.Milk;
 using UnityEngine;
 
 namespace KenneyJam2026.NPCs
@@ -23,16 +24,26 @@ namespace KenneyJam2026.NPCs
             _ => false
         };
 
-        public void Interact(Vector3 atPosition)
+        public void Interact(Vector3 atPosition, IDraggable heldObject)
         {
-            if (_npc.CurrentState == Npc.ECurrentState.AskMilk)
+            if (_npc.CurrentState == Npc.ECurrentState.AskMilk && heldObject == null)
             {
                 _npc.AskQuantity();
             }
+
+            if (_npc.CurrentState is Npc.ECurrentState.AskQuantity or Npc.ECurrentState.WaitMilk && heldObject != null)
+            {
+                if (heldObject.gameObject.TryGetComponent(out MilkContainer milkContainer))
+                {
+                    _npc.Deliver(milkContainer);
+                }
+                else
+                {
+                    _npc.RefuseDelivery();
+                }
+            }
         }
 
-        public void StopInteraction()
-        {
-        }
+        public void StopInteraction() { }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using KenneyJam2026.Interactables;
+using KenneyJam2026.Milk;
 using KenneyJam2026.NPCs.Bubbles;
 using UnityEngine;
 
@@ -16,6 +18,8 @@ namespace KenneyJam2026.NPCs
             AskMilk = 5,
             AskQuantity = 7,
             WaitMilk = 8,
+            RefuseDelivery = 12,
+            AcceptDelivery = 13,
             CancelRequest = 10,
             WantToLeave = 11,
             Leaving = 9
@@ -98,6 +102,14 @@ namespace KenneyJam2026.NPCs
                 CancelRequest();
             }
             else if (CurrentState == ECurrentState.CancelRequest && CurrentStateDuration > Type.CancelRequestDuration)
+            {
+                StartLeaving();
+            }
+            else if (CurrentState == ECurrentState.RefuseDelivery && CurrentStateDuration > Type.TimeAfterHandlingDelivery)
+            {
+                AskQuantity();
+            }
+            else if (CurrentState == ECurrentState.AcceptDelivery && CurrentStateDuration > Type.TimeAfterHandlingDelivery)
             {
                 StartLeaving();
             }
@@ -192,6 +204,35 @@ namespace KenneyJam2026.NPCs
             if (!_windowOpen && CurrentState is ECurrentState.AskMilk or ECurrentState.AskQuantity or ECurrentState.WaitMilk)
             {
                 CancelRequest();
+            }
+        }
+
+        public void RefuseDelivery()
+        {
+            if (ChangeState(ECurrentState.RefuseDelivery))
+            {
+                OnMessageArticulated?.Invoke(Type.RefuseDeliveryMessage);
+            }
+        }
+
+        public void Deliver(MilkContainer milkContainer)
+        {
+            var validDelivery = Mathf.Abs(milkContainer.CurrentCharge - ExpectedQuantity.ExpectedQuantity) < ExpectedQuantity.ErrorMargin;
+
+            if (validDelivery && ChangeState(ECurrentState.AcceptDelivery))
+            {
+                OnMessageArticulated?.Invoke(Type.AcceptDeliveryMessage);
+            }
+            else if (!validDelivery && ChangeState(ECurrentState.RefuseDelivery))
+            {
+                OnMessageArticulated?.Invoke(Type.RefuseDeliveryMessage);
+            }
+
+            var draggable = milkContainer.GetComponentInParent<IDraggable>();
+
+            if (draggable != null && draggable.gameObject)
+            {
+                Destroy(draggable.gameObject);
             }
         }
     }

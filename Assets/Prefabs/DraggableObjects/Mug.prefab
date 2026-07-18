@@ -69,6 +69,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2077672606923942801}
+    - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2072062070199717877}
   m_SourcePrefab: {fileID: 100100000, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
 --- !u!1 &854697973098178197 stripped
 GameObject:
@@ -119,6 +122,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35, y: 0.5, z: 0.35}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &2072062070199717877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854697973098178197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09aca0613cc74891b90fef6b450b2cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Milk.MilkContainer
+  _capacity: 0.3
+  _currentCharge: 0.3
 --- !u!4 &8130635606268923293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}

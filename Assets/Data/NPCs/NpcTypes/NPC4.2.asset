@@ -24,5 +24,8 @@ MonoBehaviour:
   _messageWhileKnocking: {fileID: 11400000, guid: 4255b6aa88f66c5449fc58b8ca82f096, type: 2}
   _maxDurationKnocking: 10
   _askMilkMessage: {fileID: 11400000, guid: 311bbe3c045b2da44a9eb7e0535b2927, type: 2}
+  _refuseDeliveryMessage: {fileID: 11400000, guid: 4255b6aa88f66c5449fc58b8ca82f096, type: 2}
+  _acceptDeliveryMessage: {fileID: 11400000, guid: d2683326acddcc848899b97fe05e2c50, type: 2}
+  _timeAfterHandlingDelivery: 2
   _messageWhileCancelling: {fileID: 11400000, guid: 7cc3e1d1f7d323d489f2f2877f1376a1, type: 2}
   _cancelRequestDuration: 1

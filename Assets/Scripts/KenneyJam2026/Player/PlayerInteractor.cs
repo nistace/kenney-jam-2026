@@ -12,6 +12,7 @@ namespace KenneyJam2026.Player
 
         private IInteractable _currentInteractable;
         public event Action<IInteractable> OnInteractionStarted;
+        public event Action<IInteractable> OnInteractionEnding;
         public event Action<IInteractable> OnInteractionEnded;
 
         private void OnEnable()
@@ -35,6 +36,13 @@ namespace KenneyJam2026.Player
                 return;
             }
 
+            OnInteractionEnding?.Invoke(_currentInteractable);
+
+            if (_currentInteractable == null)
+            {
+                
+            }
+
             var interactable = _currentInteractable;
             _currentInteractable.StopInteraction();
             _currentInteractable = null;
@@ -50,7 +58,7 @@ namespace KenneyJam2026.Player
             }
 
             _currentInteractable = _detector.AimedInteractable;
-            _currentInteractable.Interact(_detector.HitPosition);
+            _currentInteractable.Interact(_detector.HitPosition, null);
             OnInteractionStarted?.Invoke(_currentInteractable);
         }
     }

@@ -10,6 +10,7 @@ namespace KenneyJam2026.Interactables
         [SerializeField] private float _minValue = -1;
         [SerializeField] private float _maxValue = 1;
         [SerializeField] private float _speed = 1;
+        [SerializeField] private GameObject[] _objectsToActivateWhileDragging;
 
         public InteractableType InteractableType => _interactableType;
         public InteractableType DraggingInteractionType => _draggingInteractionType;
@@ -21,12 +22,28 @@ namespace KenneyJam2026.Interactables
 
         public event Action<float> OnMoved;
 
+        private void OnEnable() => RefreshObjectToActiveWhileDragging();
+        private void OnDisable() => RefreshObjectToActiveWhileDragging();
+
+        private void RefreshObjectToActiveWhileDragging()
+        {
+            foreach (var objectToActivateWhileDragging in _objectsToActivateWhileDragging)
+            {
+                if (objectToActivateWhileDragging != null)
+                {
+                    objectToActivateWhileDragging.SetActive(true);
+                }
+            }
+        }
+
         public void Interact() { }
 
         public bool CanInteractWith(IDraggable heldObject) => heldObject == null;
 
-        public void Interact(Vector3 atPosition)
+        public void Interact(Vector3 atPosition, IDraggable heldObject)
         {
+            if (heldObject != null) return;
+
             _offsetOnInteractionStarted = new Vector3(0, atPosition.y - transform.position.y, 0);
             Velocity = Vector3.zero;
             enabled = true;
@@ -35,6 +52,10 @@ namespace KenneyJam2026.Interactables
         public void StopInteraction()
         {
             enabled = false;
+            foreach (var objectToActivateWhileDragging in _objectsToActivateWhileDragging)
+            {
+                objectToActivateWhileDragging.SetActive(false);
+            }
         }
 
         public void SetOnDraggedLayer(bool dragged)

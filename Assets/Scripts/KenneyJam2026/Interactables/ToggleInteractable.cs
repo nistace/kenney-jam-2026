@@ -15,10 +15,11 @@ namespace KenneyJam2026.Interactables
 
         public bool CanInteractWith(IDraggable heldObject) => heldObject == null;
 
-        public void Interact(Vector3 atPosition)
+        public void Interact(Vector3 atPosition, IDraggable heldObject)
         {
-            _isOn = !_isOn;
+            if (heldObject != null) return;
 
+            _isOn = !_isOn;
             OnIsOnChanged?.Invoke(_isOn);
         }
 

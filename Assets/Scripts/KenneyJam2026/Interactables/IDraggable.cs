@@ -13,6 +13,9 @@ namespace KenneyJam2026.Interactables
         Vector3 Position { get; }
         Vector3 Velocity { get; set; }
 
+        // ReSharper disable once InconsistentNaming
+        GameObject gameObject { get; }
+
         void Release(Vector3 intendedForce);
         void SetOnDraggedLayer(bool value);
         LayerMask GetDraggedInteractionLayerMask(LayerMask currentLayerMask);

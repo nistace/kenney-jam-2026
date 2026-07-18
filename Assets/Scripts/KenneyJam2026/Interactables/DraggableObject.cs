@@ -12,6 +12,7 @@ namespace KenneyJam2026.Interactables
         public InteractableType InteractableType => _type;
         public InteractableType DraggingInteractionType => _draggingInteractionType;
         public Vector3 Position => transform.position;
+        public GameObject GameObject { get; }
 
         public Vector3 Velocity
         {
@@ -26,10 +27,14 @@ namespace KenneyJam2026.Interactables
 
         public bool CanInteractWith(IDraggable heldObject) => heldObject == null;
 
-        public void Interact(Vector3 atPosition)
+        public void Interact(Vector3 atPosition, IDraggable heldObject)
         {
+            if (heldObject != null) return;
+
             _rigidbody.useGravity = false;
         }
+
+        public void StopInteraction() => _rigidbody.useGravity = true;
 
         public void SetOnDraggedLayer(bool value)
         {
@@ -43,14 +48,10 @@ namespace KenneyJam2026.Interactables
 
         public LayerMask GetDraggedInteractionLayerMask(LayerMask currentLayerMask) => currentLayerMask | IDraggable.DragAimCatcherLayerMask;
 
+
         public void Release(Vector3 intendedForce)
         {
             _rigidbody.AddForce(intendedForce, ForceMode.Impulse);
-        }
-
-        public void StopInteraction()
-        {
-            _rigidbody.useGravity = true;
         }
     }
 }

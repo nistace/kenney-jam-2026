@@ -7,7 +7,7 @@ namespace KenneyJam2026.Interactables
         InteractableType InteractableType { get; }
 
         public bool CanInteractWith(IDraggable heldObject);
-        void Interact(Vector3 atPosition);
+        void Interact(Vector3 atPosition, IDraggable heldObject);
         void StopInteraction();
     }
 }

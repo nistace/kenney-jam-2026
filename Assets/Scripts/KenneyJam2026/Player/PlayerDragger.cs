@@ -31,6 +31,7 @@ namespace KenneyJam2026.Player
 
         private void OnDisable()
         {
+            _interactor.OnInteractionEnding -= HandleInteractionEnding;
             _interactor.OnInteractionEnded -= HandleInteractionEnded;
         }
 
@@ -58,20 +59,36 @@ namespace KenneyJam2026.Player
 
             enabled = true;
 
+            _interactor.OnInteractionEnding -= HandleInteractionEnding;
+            _interactor.OnInteractionEnding += HandleInteractionEnding;
             _interactor.OnInteractionEnded -= HandleInteractionEnded;
             _interactor.OnInteractionEnded += HandleInteractionEnded;
+        }
+
+        private void HandleInteractionEnding(IInteractable interactable)
+        {
+            if (!ReferenceEquals(interactable, DraggedObject)) return;
+
+            if (_aimer.AimedInteractable != null && _aimer.AimedInteractable.CanInteractWith(DraggedObject))
+            {
+                _aimer.AimedInteractable.Interact(_aimer.HitPosition, DraggedObject);
+            }
         }
 
         private void HandleInteractionEnded(IInteractable interactable)
         {
             if (!ReferenceEquals(interactable, DraggedObject)) return;
 
-            DraggedObject.SetOnDraggedLayer(false);
-            DraggedObject.Release((_aimer.HitPosition - DraggedObject.Position) * _dropForce);
+            if (DraggedObject != null)
+            {
+                DraggedObject.SetOnDraggedLayer(false);
+                DraggedObject.Release((_aimer.HitPosition - DraggedObject.Position) * _dropForce);
+            }
 
             _aimer.HitMask = _previousHitLayerMask;
             _aimer.RelevantMask = _previousRelevantLayerMask;
 
+            DraggedObject = null;
             enabled = false;
         }
 

@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Interactables.DraggableObject
   _type: {fileID: 11400000, guid: 53ad0d7568dfc88488fd728b597a0d4f, type: 2}
+  _draggingInteractionType: {fileID: 11400000, guid: f403d34af03a32f449b91c9465e5fe84, type: 2}
   _rigidbody: {fileID: 403488674109100335}
   _interactableLayerObjects:
   - {fileID: 1653554434114848445}

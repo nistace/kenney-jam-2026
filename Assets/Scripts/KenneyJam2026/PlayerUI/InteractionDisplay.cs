@@ -18,9 +18,16 @@ namespace KenneyJam2026.PlayerUI
 
             if (_dragger && _dragger.IsDragging)
             {
-                interactionType = _dragger.DraggedObject.DraggingInteractionType;
+                if (_aimDetector && _aimDetector.AimedInteractable != null && _aimDetector.AimedInteractable.CanInteractWith(_dragger.DraggedObject))
+                {
+                    interactionType = _aimDetector.AimedInteractable.InteractableType;
+                }
+                else
+                {
+                    interactionType = _dragger.DraggedObject.DraggingInteractionType;
+                }
             }
-            else if (_aimDetector && _aimDetector.AimedInteractable != null)
+            else if (_aimDetector && _aimDetector.AimedInteractable != null && _aimDetector.AimedInteractable.CanInteractWith(null))
             {
                 interactionType = _aimDetector.AimedInteractable.InteractableType;
             }

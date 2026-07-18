@@ -17,6 +17,9 @@ namespace KenneyJam2026.NPCs
         [SerializeField] private NpcMessage _messageWhileKnocking;
         [SerializeField] private float _maxDurationKnocking = 10;
         [SerializeField] private NpcMessage _askMilkMessage;
+        [SerializeField] private NpcMessage _refuseDeliveryMessage;
+        [SerializeField] private NpcMessage _acceptDeliveryMessage;
+        [SerializeField] private float _timeAfterHandlingDelivery = 2;
         [SerializeField] private NpcMessage _messageWhileCancelling;
         [SerializeField] private float _cancelRequestDuration = 1;
 
@@ -31,6 +34,9 @@ namespace KenneyJam2026.NPCs
         public NpcMessage MessageWhileKnocking => _messageWhileKnocking;
         public float MaxDurationInLine => _maxDurationInLine;
         public NpcMessage MessageWhileCancelling => _messageWhileCancelling;
+        public NpcMessage RefuseDeliveryMessage => _refuseDeliveryMessage;
+        public NpcMessage AcceptDeliveryMessage => _acceptDeliveryMessage;
+        public float TimeAfterHandlingDelivery => _timeAfterHandlingDelivery;
 
         public NpcExpectedQuantity GetRandomExpectedQuantity() => _possibleExpectedQuantities[Random.Range(0, _possibleExpectedQuantities.Length)];
     }

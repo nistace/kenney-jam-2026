@@ -1,5 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1517013664892287988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8826706786535102964}
+  - component: {fileID: 6565989960560888519}
+  - component: {fileID: 5976270813024297650}
+  m_Layer: 6
+  m_Name: InteractableNPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8826706786535102964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517013664892287988}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3909637483192105858}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6565989960560888519
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517013664892287988}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Height: 6.7449307
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.3724654, z: 0}
+--- !u!114 &5976270813024297650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517013664892287988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05cb8c060e14f51927a08111678b95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.InteractableNpc
+  _interactToAskQuantity: {fileID: 11400000, guid: 2ada17bad417aa942ba74cd381ac4317, type: 2}
+  _interactToDeliver: {fileID: 11400000, guid: 2768e74e3626606438df227e9f471c0a, type: 2}
+  _npc: {fileID: 1744170791700822484}
 --- !u!1 &5251018810122407524
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +100,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8826706786535102964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1744170791700822484
@@ -44,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb59076e1034426c9e2f22584138baa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.Npc
-  _speed: 2
   _smoothSpeed: 0.1
   _targetPosition: {x: 0, y: 0, z: 0}
   _targetForward: {x: 0, y: 0, z: 1}
+  _atTargetPosition: 0

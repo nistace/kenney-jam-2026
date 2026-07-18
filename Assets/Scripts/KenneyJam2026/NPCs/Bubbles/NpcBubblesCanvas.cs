@@ -88,6 +88,11 @@ namespace KenneyJam2026.NPCs.Bubbles
 
         private async UniTask ShowMessageAsync(NpcMessage message, CancellationToken cancellationToken)
         {
+            if (!message)
+            {
+                return;
+            }
+
             for (var i = 0; i < message.BubbleCount; ++i)
             {
                 await UniTask.Delay((int)(message.GetDelay(i) * 1000), cancellationToken: cancellationToken);
