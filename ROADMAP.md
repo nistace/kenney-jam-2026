@@ -1,14 +1,8 @@
 ﻿# TODO
 
-
-## Scale
-
-- Give a default rotation to objects so that they stop rotating indefinitely
-
 ## Milk
 
-- Make it possible to pour milk in recipients
-- Update the scale if a recipient is on the scale while it filled in
+- Make it possible for recipients to receive milk
 
 ## Bin
 
@@ -17,6 +11,7 @@
 
 ## Score
 
+- Set up some more complex requests
 - Add stars on the door that get unlocked whenever a NPC of a given level is delivered.
 - Start with level 1 NPCs in the bank. When one is satisfied, unlock level 2s, etc.
 
