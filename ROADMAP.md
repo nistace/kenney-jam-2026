@@ -1,9 +1,5 @@
 ﻿# TODO
 
-## Window
-
-- Drag the window to open or close it.
-
 ## NPCs
 
 - Add NPCs in a line outside the window

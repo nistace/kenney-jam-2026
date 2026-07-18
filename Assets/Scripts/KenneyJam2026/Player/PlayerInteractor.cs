@@ -11,8 +11,6 @@ namespace KenneyJam2026.Player
         [SerializeField] private InputActionReference _interactActionReference;
 
         private IInteractable _currentInteractable;
-        private bool IsInteracting => _currentInteractable != null;
-
         public event Action<IInteractable> OnInteractionStarted;
         public event Action<IInteractable> OnInteractionEnded;
 
@@ -52,7 +50,7 @@ namespace KenneyJam2026.Player
             }
 
             _currentInteractable = _detector.AimedInteractable;
-            _currentInteractable.Interact();
+            _currentInteractable.Interact(_detector.HitPosition);
             OnInteractionStarted?.Invoke(_currentInteractable);
         }
     }

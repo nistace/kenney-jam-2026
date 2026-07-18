@@ -18,9 +18,9 @@ namespace KenneyJam2026.PlayerUI
             {
                 _displayImage.overrideSprite = _draggingInteractionType.GetTimedCursorSprite();
             }
-            else if (_aimDetector && _aimDetector.AimedInteractable is { Type: { HasCursorSprites: true } })
+            else if (_aimDetector && _aimDetector.AimedInteractable is { InteractableType: { HasCursorSprites: true } })
             {
-                _displayImage.overrideSprite = _aimDetector.AimedInteractable.Type.GetTimedCursorSprite();
+                _displayImage.overrideSprite = _aimDetector.AimedInteractable.InteractableType.GetTimedCursorSprite();
             }
             else
             {
