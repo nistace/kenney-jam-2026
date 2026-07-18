@@ -143,6 +143,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 529241181528127703, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      propertyPath: _interactableLayerObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 529241181528127703, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      propertyPath: '_interactableLayerObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3247017065767251134}
     - target: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       propertyPath: m_Name
       value: MilkLiter
@@ -202,10 +210,7 @@ PrefabInstance:
       addedObject: {fileID: 8884252203536475641}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2596724594263257544}
-    - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 4366908653684845486}
   m_SourcePrefab: {fileID: 100100000, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
 --- !u!4 &1315020073739367816 stripped
@@ -218,19 +223,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
   m_PrefabInstance: {fileID: 9206717131465431101}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2596724594263257544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7581333388589538944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82c1c3a97f494d948e182fe35b7ddee5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Scales.WeighingObject
-  _weight: 1
 --- !u!65 &4366908653684845486
 BoxCollider:
   m_ObjectHideFlags: 0

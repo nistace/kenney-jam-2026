@@ -6,8 +6,6 @@ namespace KenneyJam2026.Player
 {
     public class PlayerDragger : MonoBehaviour
     {
-        private static int InteractableLayer => LayerMask.NameToLayer("Interactable");
-        private static int DraggedInteractableLayer => LayerMask.NameToLayer("DraggedInteractable");
         private static int DragAimCatcherLayer => LayerMask.NameToLayer("DragAimCatcher");
         private static int DragAimCatcherLayerMask => 1 << DragAimCatcherLayer;
 
@@ -50,7 +48,7 @@ namespace KenneyJam2026.Player
             }
 
             _draggedObject = draggable;
-            _draggedObject.gameObject.layer = DraggedInteractableLayer;
+            _draggedObject.OnDraggedLayer = true;
             _draggedObjectAcceleration = Vector3.zero;
 
             _aimer.HitMask |= DragAimCatcherLayerMask;
@@ -66,7 +64,7 @@ namespace KenneyJam2026.Player
         {
             if (!ReferenceEquals(interactable, _draggedObject)) return;
 
-            _draggedObject.gameObject.layer = InteractableLayer;
+            _draggedObject.OnDraggedLayer = false;
             _draggedObject.AddForce((_aimer.HitPosition - _draggedObject.transform.position) * _dropForce);
 
             _aimer.HitMask &= ~DragAimCatcherLayerMask;

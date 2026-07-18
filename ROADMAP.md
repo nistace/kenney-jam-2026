@@ -2,8 +2,6 @@
 
 ## Scale
 
-- Effect of draggables on the scale.
-- Scale should also move the condiment light.
 - Give a default rotation to objects so that they stop rotating indefinitely
 
 ## Window

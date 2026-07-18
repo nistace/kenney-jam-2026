@@ -5,8 +5,12 @@ namespace KenneyJam2026.Interactables
 {
     public class DraggableObject : MonoBehaviour, IInteractable
     {
+        private static int InteractableLayer => LayerMask.NameToLayer("Interactable");
+        private static int DraggedInteractableLayer => LayerMask.NameToLayer("DraggedInteractable");
+
         [SerializeField] private InteractableType _type;
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private GameObject[] _interactableLayerObjects;
 
         public InteractableType Type => _type;
 
@@ -14,6 +18,19 @@ namespace KenneyJam2026.Interactables
         {
             get => _rigidbody.linearVelocity;
             set => _rigidbody.linearVelocity = value;
+        }
+
+        public bool OnDraggedLayer
+        {
+            set
+            {
+                var newLayer = value ? DraggedInteractableLayer : InteractableLayer;
+
+                foreach (var layerObject in _interactableLayerObjects)
+                {
+                    layerObject.layer = newLayer;
+                }
+            }
         }
 
         private void Reset()

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7924989239265996213}
   - component: {fileID: 403488674109100335}
   - component: {fileID: 529241181528127703}
+  - component: {fileID: 6615153644919908853}
+  - component: {fileID: 6235690854441578086}
   m_Layer: 6
   m_Name: _DraggableObject
   m_TagString: Untagged
@@ -74,3 +76,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Interactables.DraggableObject
   _type: {fileID: 11400000, guid: 53ad0d7568dfc88488fd728b597a0d4f, type: 2}
   _rigidbody: {fileID: 403488674109100335}
+  _interactableLayerObjects:
+  - {fileID: 1653554434114848445}
+--- !u!114 &6615153644919908853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653554434114848445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c1c3a97f494d948e182fe35b7ddee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Scales.WeighingObject
+  _weight: 1
+  _collisionTracker: {fileID: 6235690854441578086}
+--- !u!114 &6235690854441578086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653554434114848445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116e8195b5fa4775ac75e3c48396b5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Scales.WeighingObjectCollisionTracker
+  _positionReference: {fileID: 7924989239265996213}

@@ -139,9 +139,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 529241181528127703, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      propertyPath: _interactableLayerObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 529241181528127703, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      propertyPath: '_interactableLayerObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6812381522638389908}
     - target: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       propertyPath: m_Name
-      value: MilkHalf Variant
+      value: MilkHalf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615153644919908853, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      propertyPath: _weight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -221,7 +233,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.46, y: 0.46, z: 1}
+  m_Size: {x: 0.46, y: 0.46, z: 0.46}
   m_Center: {x: 0, y: 0.21751308, z: 0}
 --- !u!4 &4984530624831117626 stripped
 Transform:
