@@ -1,12 +1,9 @@
 ﻿# TODO
 
-## Milk
-
-- Make it possible for recipients to receive milk
-
 ## Bin
 
 - Add a bin to get rid of trash
+- Respawn objects
 - Respawn stuff so that we get an infinite loop
 
 ## Score

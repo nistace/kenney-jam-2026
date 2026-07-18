@@ -151,6 +151,73 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7207097187681930842, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
   m_PrefabInstance: {fileID: 413983272808692243}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2061711138362381108
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4984530624831117626}
+    m_Modifications:
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.18500626
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9151506
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.0299191
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136096065854421043, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_Name
+      value: SplashingMilk
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+--- !u!4 &1652008317204343966 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+  m_PrefabInstance: {fileID: 2061711138362381108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2515732906397707021 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4500510981165086777, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+  m_PrefabInstance: {fileID: 2061711138362381108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2878182963777619530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6615153644919908853, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       propertyPath: _weight
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -308,6 +375,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3813923033796760022}
+    - targetCorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1652008317204343966}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       insertIndex: -1
@@ -374,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Milk.MilkPourer
   _container: {fileID: 1185451411687137219}
   _particles: {fileID: 7041944415329891401}
+  _splashParticles: {fileID: 2515732906397707021}
   _pourOrigin: {fileID: 3813923033796760022}
   _tiltCurvePerContainerCharge:
     serializedVersion: 2
@@ -400,6 +471,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _flowRate: 0.1
+  _pourDirection: {x: 0, y: -1, z: 0}
+  _maxPourDistance: 2
+  _pourMask:
+    serializedVersion: 2
+    m_Bits: 705
 --- !u!4 &4984530624831117626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}

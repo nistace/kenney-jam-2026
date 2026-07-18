@@ -21,19 +21,28 @@ namespace KenneyJam2026.Milk
             _weighingObject.AdditionalDynamicWeight = _currentCharge;
         }
 
-        public void Add(float value) => Change(value);
-        public void Remove(float value) => Change(-value);
+        public float Add(float value) => Change(value);
+        public float Remove(float value) => -Change(-value);
 
-        private void Change(float delta)
+        private float Change(float delta)
         {
             if (Mathf.Approximately(delta, 0))
             {
-                return;
+                return 0;
             }
 
+            var oldCharge = _currentCharge;
             _currentCharge = Mathf.Clamp(_currentCharge + delta, 0, _capacity);
+
+            if (Mathf.Approximately(oldCharge, _currentCharge))
+            {
+                return 0;
+            }
+
             _weighingObject.AdditionalDynamicWeight = _currentCharge;
             OnChargeChanged?.Invoke();
+
+            return _currentCharge - oldCharge;
         }
     }
 }

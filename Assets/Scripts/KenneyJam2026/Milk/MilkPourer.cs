@@ -6,10 +6,16 @@ namespace KenneyJam2026.Milk
     {
         [SerializeField] private MilkContainer _container;
         [SerializeField] private ParticleSystem _particles;
+        [SerializeField] private ParticleSystem _splashParticles;
         [SerializeField] private Transform _pourOrigin;
         [SerializeField] private AnimationCurve _tiltCurvePerContainerCharge;
         [SerializeField] private float _flowRate = .1f;
-        
+        [SerializeField] private Vector3 _pourDirection = Vector3.down;
+        [SerializeField] private float _maxPourDistance = 1;
+        [SerializeField] private LayerMask _pourMask;
+
+        private static readonly RaycastHit[] NonAllocHits = new RaycastHit[5];
+
         public Vector3 GetRequiredUpToPour() => GetRequiredUpToPourWithRatio(Mathf.Max(0f, _container.CurrentChargeRatio));
         public Vector3 GetRequiredUpToPourAtLowerCharge() => GetRequiredUpToPourWithRatio(Mathf.Max(0f, _container.CurrentChargeRatio - .1f));
 
@@ -34,10 +40,63 @@ namespace KenneyJam2026.Milk
                 _particles.Stop();
             }
 
-            if (pouring)
+            if (!pouring) return;
+
+            var removedQuantity = _container.Remove(_flowRate * Time.deltaTime);
+
+            if (removedQuantity > 0)
             {
-                _container.Remove(_flowRate * Time.deltaTime);
+                ResolvePouring(removedQuantity);
             }
+        }
+
+        private void ResolvePouring(float pouredAmount)
+        {
+            var hits = Physics.RaycastNonAlloc(new Ray(_pourOrigin.position, _pourDirection), NonAllocHits, _maxPourDistance, _pourMask);
+
+            var bestHitDistance = 2 * _maxPourDistance;
+            RaycastHit bestHit = default;
+
+            for (var i = 0; i < hits; i++)
+            {
+                var hit = NonAllocHits[i];
+
+                if (hit.collider.transform.IsChildOf(transform))
+                {
+                    continue;
+                }
+
+                if (hit.distance > bestHitDistance)
+                {
+                    continue;
+                }
+
+                bestHitDistance = hit.distance;
+                bestHit = hit;
+            }
+
+            if (!(bestHitDistance < _maxPourDistance))
+            {
+                return;
+            }
+
+            if (bestHit.collider.TryGetComponent(out MilkPouringReceiver receiver))
+            {
+                if (receiver.Feed(pouredAmount))
+                {
+                    return;
+                }
+            }
+
+            _splashParticles.transform.position = bestHit.point;
+            _splashParticles.transform.up = bestHit.normal;
+            _splashParticles.Play();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(_pourOrigin.position, _pourOrigin.position + _pourDirection.normalized * _maxPourDistance);
         }
     }
 }
