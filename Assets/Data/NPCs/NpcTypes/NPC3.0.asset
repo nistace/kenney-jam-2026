@@ -30,3 +30,10 @@ MonoBehaviour:
   _timeAfterHandlingDelivery: 2
   _messageWhileCancelling: {fileID: 11400000, guid: ab3787b23bcc9f1498ee8ac314995511, type: 2}
   _cancelRequestDuration: 1
+  _audio:
+    _knock: {fileID: 8300000, guid: d28d4a5a890928a4ebe89e6affb3c6f7, type: 3}
+    _askMilk: {fileID: 8300000, guid: 8e817a17fe27fbf419059f6611cdcac0, type: 3}
+    _askQuantity: {fileID: 8300000, guid: 8f3cc939febff5a41809560ca57da31e, type: 3}
+    _refuseDelivery: {fileID: 8300000, guid: da03f1019127d9d46ab9d79ca2150f68, type: 3}
+    _acceptDelivery: {fileID: 8300000, guid: 469735f7cc684874b8d593223a512f14, type: 3}
+    _cancel: {fileID: 8300000, guid: 8ad9931e32f199c47b348f4417536b35, type: 3}

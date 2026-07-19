@@ -1,4 +1,5 @@
 ﻿using System;
+using KenneyJam2026.Audio;
 using KenneyJam2026.Interactables;
 using KenneyJam2026.Milk;
 using KenneyJam2026.NPCs.Bubbles;
@@ -29,6 +30,7 @@ namespace KenneyJam2026.NPCs
         [SerializeField] private Vector3 _targetPosition;
         [SerializeField] private Vector3 _targetForward = Vector3.forward;
         [SerializeField] private bool _atTargetPosition;
+        [SerializeField] private AudioSfx _audioSfx;
 
         private Vector3 _currentVelocity;
         public ECurrentState CurrentState { get; private set; } = ECurrentState.Spawned;
@@ -165,6 +167,7 @@ namespace KenneyJam2026.NPCs
         {
             if (ChangeState(ECurrentState.AskMilk))
             {
+                _audioSfx.Play(Type.Audio.AskMilk);
                 OnMessageArticulated?.Invoke(Type.AskMilkMessage);
             }
         }
@@ -173,6 +176,7 @@ namespace KenneyJam2026.NPCs
         {
             if (ChangeState(ECurrentState.CancelRequest))
             {
+                _audioSfx.Play(Type.Audio.Cancel);
                 OnMessageArticulated?.Invoke(Type.MessageWhileCancelling);
             }
         }
@@ -181,6 +185,7 @@ namespace KenneyJam2026.NPCs
         {
             if (ChangeState(ECurrentState.Knocking))
             {
+                _audioSfx.Play(Type.Audio.Knock);
                 OnMessageArticulated?.Invoke(Type.MessageWhileKnocking);
             }
         }
@@ -189,6 +194,7 @@ namespace KenneyJam2026.NPCs
         {
             if (ChangeState(ECurrentState.AskQuantity))
             {
+                _audioSfx.Play(Type.Audio.AskQuantity);
                 OnMessageArticulated?.Invoke(ExpectedQuantity.Message);
             }
         }
@@ -212,6 +218,7 @@ namespace KenneyJam2026.NPCs
         {
             if (ChangeState(ECurrentState.RefuseDelivery))
             {
+                _audioSfx.Play(Type.Audio.RefuseDelivery);
                 OnMessageArticulated?.Invoke(Type.RefuseDeliveryMessage);
             }
         }
@@ -222,11 +229,13 @@ namespace KenneyJam2026.NPCs
 
             if (validDelivery && ChangeState(ECurrentState.AcceptDelivery))
             {
+                _audioSfx.Play(Type.Audio.AcceptDelivery);
                 OnDeliveryFulfilled?.Invoke(this);
                 OnMessageArticulated?.Invoke(Type.AcceptDeliveryMessage);
             }
             else if (!validDelivery && ChangeState(ECurrentState.RefuseDelivery))
             {
+                _audioSfx.Play(Type.Audio.RefuseDelivery);
                 OnMessageArticulated?.Invoke(Type.RefuseDeliveryMessage);
             }
 

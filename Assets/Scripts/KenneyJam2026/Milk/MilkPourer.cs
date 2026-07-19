@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using KenneyJam2026.Audio;
+using UnityEngine;
 
 namespace KenneyJam2026.Milk
 {
@@ -13,8 +14,13 @@ namespace KenneyJam2026.Milk
         [SerializeField] private Vector3 _pourDirection = Vector3.down;
         [SerializeField] private float _maxPourDistance = 1;
         [SerializeField] private LayerMask _pourMask;
+        [SerializeField] private AudioSfx _audioSfx;
+        [SerializeField] private AnimationCurve _audioPitchCurve;
+        [SerializeField] private float _audioCooldown = .05f;
 
         private static readonly RaycastHit[] NonAllocHits = new RaycastHit[5];
+
+        private float _nextAudioTime;
 
         public Vector3 GetRequiredUpToPour() => GetRequiredUpToPourWithRatio(Mathf.Max(0f, _container.CurrentChargeRatio));
         public Vector3 GetRequiredUpToPourAtLowerCharge() => GetRequiredUpToPourWithRatio(Mathf.Max(0f, _container.CurrentChargeRatio - .1f));
@@ -44,10 +50,17 @@ namespace KenneyJam2026.Milk
 
             var removedQuantity = _container.Remove(_flowRate * Time.deltaTime);
 
-            if (removedQuantity > 0)
+            if (Mathf.Approximately(removedQuantity, 0)) return;
+
+            if (Time.time > _nextAudioTime)
             {
-                ResolvePouring(removedQuantity);
+                _audioSfx.Pitch = _audioPitchCurve.Evaluate(_container.CurrentChargeRatio);
+                _audioSfx.Play();
+
+                _nextAudioTime = Time.time + _audioCooldown;
             }
+
+            ResolvePouring(removedQuantity);
         }
 
         private void ResolvePouring(float pouredAmount)

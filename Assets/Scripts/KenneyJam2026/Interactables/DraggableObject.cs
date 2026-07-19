@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using KenneyJam2026.Spawners;
+using UnityEditor;
+using UnityEngine;
 
 namespace KenneyJam2026.Interactables
 {
@@ -20,6 +23,8 @@ namespace KenneyJam2026.Interactables
             get => _rigidbody.linearVelocity;
             set => _rigidbody.linearVelocity = value;
         }
+
+        public event Action<DraggableObject> OnDestroying;
 
         private void Reset()
         {
@@ -74,5 +79,23 @@ namespace KenneyJam2026.Interactables
         {
             _rigidbody.AddForce(intendedForce, ForceMode.Impulse);
         }
+
+        private void OnDestroy() => OnDestroying?.Invoke(this);
+
+#if UNITY_EDITOR
+        [ContextMenu("To Spawner")]
+        private void ToSpawner()
+        {
+            var spawner = new GameObject(name + " Spawner").AddComponent<DraggableSpawner>();
+            spawner.transform.SetParent(transform.parent);
+            spawner.transform.localPosition = transform.localPosition;
+            spawner.transform.localRotation = transform.localRotation;
+
+            var o = new SerializedObject(spawner);
+            o.Update();
+            o.FindProperty("_prefab").objectReferenceValue = PrefabUtility.GetCorrespondingObjectFromSource(gameObject).GetComponent<DraggableObject>();
+            o.ApplyModifiedProperties();
+        }
+#endif
     }
 }

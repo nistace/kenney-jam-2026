@@ -1,5 +1,7 @@
-﻿using KenneyJam2026.NPCs.Bubbles;
+﻿using System;
+using KenneyJam2026.NPCs.Bubbles;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KenneyJam2026.NPCs
 {
@@ -23,6 +25,8 @@ namespace KenneyJam2026.NPCs
         [SerializeField] private NpcMessage _messageWhileCancelling;
         [SerializeField] private float _cancelRequestDuration = 1;
 
+        [SerializeField] private AudioData _audio;
+
         public GameObject ModelPrefab => _modelPrefab;
         public int Level => _level;
         public NpcMessage AskMilkMessage => _askMilkMessage;
@@ -38,6 +42,31 @@ namespace KenneyJam2026.NPCs
         public NpcMessage AcceptDeliveryMessage => _acceptDeliveryMessage;
         public float TimeAfterHandlingDelivery => _timeAfterHandlingDelivery;
 
+        public AudioData Audio => _audio;
+
         public NpcExpectedQuantity GetRandomExpectedQuantity() => _possibleExpectedQuantities[Random.Range(0, _possibleExpectedQuantities.Length)];
+
+        [Serializable]
+        public class AudioData
+        {
+            [SerializeField] private AudioClip _knock;
+            [SerializeField] private AudioClip _askMilk;
+            [SerializeField] private AudioClip _askQuantity;
+            [SerializeField] private AudioClip _refuseDelivery;
+            [SerializeField] private AudioClip _acceptDelivery;
+            [SerializeField] private AudioClip _cancel;
+
+            public AudioClip Knock => _knock;
+
+            public AudioClip AskMilk => _askMilk;
+
+            public AudioClip AskQuantity => _askQuantity;
+
+            public AudioClip RefuseDelivery => _refuseDelivery;
+
+            public AudioClip AcceptDelivery => _acceptDelivery;
+
+            public AudioClip Cancel => _cancel;
+        }
     }
 }

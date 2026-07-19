@@ -1,4 +1,5 @@
 ﻿using System;
+using KenneyJam2026.Audio;
 using UnityEngine;
 
 namespace KenneyJam2026.Interactables
@@ -7,6 +8,7 @@ namespace KenneyJam2026.Interactables
     {
         [SerializeField] private InteractableType _type;
         [SerializeField] private bool _isOn;
+        [SerializeField] private AudioSfx _audioSfx;
 
         public bool IsOn => _isOn;
         public InteractableType InteractableType => _type;
@@ -17,6 +19,8 @@ namespace KenneyJam2026.Interactables
 
         public void Interact(Vector3 atPosition, IDraggable heldObject)
         {
+            _audioSfx.Play();
+
             if (heldObject != null) return;
 
             _isOn = !_isOn;
