@@ -1,4 +1,5 @@
-﻿using KenneyJam2026.NPCs;
+﻿using KenneyJam2026.Audio;
+using KenneyJam2026.NPCs;
 using UnityEngine;
 
 namespace KenneyJam2026.Scores
@@ -9,6 +10,7 @@ namespace KenneyJam2026.Scores
         [SerializeField] private MeshRenderer[] _stars;
         [SerializeField] private Material _inactiveStarMaterial;
         [SerializeField] private Material _activeStarMaterial;
+        [SerializeField] private AudioSfx _audioSfx;
 
         private void Start()
         {
@@ -22,7 +24,11 @@ namespace KenneyJam2026.Scores
             _npcManager.OnHighestNpcLevelCompletedIncreased -= HandleHighestNpcLevelCompletedIncreased;
         }
 
-        private void HandleHighestNpcLevelCompletedIncreased(int newBest) => RefreshActiveStars();
+        private void HandleHighestNpcLevelCompletedIncreased(int newBest)
+        {
+            RefreshActiveStars();
+            _audioSfx.Play();
+        }
 
         private void RefreshActiveStars()
         {

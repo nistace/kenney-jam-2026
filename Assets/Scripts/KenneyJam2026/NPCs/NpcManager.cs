@@ -95,6 +95,10 @@ namespace KenneyJam2026.NPCs
             UnsubscribeNpcEvents();
 
             _lineHeadNpc = _line.Head.Owner;
+            if (_lineHeadNpc != null)
+            {
+                _lineHeadNpc.SetWindowOpen(_windowMechanism.IsOpen);
+            }
 
             SubscribeNpcEvents();
         }

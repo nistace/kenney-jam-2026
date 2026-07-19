@@ -1,16 +1,5 @@
 ﻿# TODO
 
-## Bin
-
-- Respawn objects
-- Respawn stuff so that we get an infinite loop
-
-## Score
-
-- Set up some more complex requests
-- Add stars on the door that get unlocked whenever a NPC of a given level is delivered.
-- Start with level 1 NPCs in the bank. When one is satisfied, unlock level 2s, etc.
-
 ## The Door
 
 - Add short animation of the player entering the room.
@@ -20,7 +9,12 @@
 ## NPCs
 
 - Add animations
-- Add sound effects
+
+## SFX
+
+- Do a pass on all SFX
+
+# Cancelled
 
 ## TV
 
@@ -28,10 +22,4 @@
 
 ## Radio
 
-- Add music
-- Turn on and off music
-- Change volume of the music
-
-## SFX
-
-- Do a pass on all SFX
+- Change volume of the music 

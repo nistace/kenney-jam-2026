@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
-using Cysharp.Threading.Tasks;
 using KenneyJam2026.Interactables;
 using UnityEngine;
 
@@ -9,15 +7,23 @@ namespace KenneyJam2026.Spawners
     public class DraggableSpawnerManager : MonoBehaviour
     {
         private readonly Dictionary<DraggableObject, DraggableSpawner> _spawnerPerInstance = new();
+        private readonly List<DraggableSpawner> _spawnersToTrigger = new();
+        private float _nextSpawnTime;
 
         private void Start()
         {
-            foreach (var spawner in GetComponentsInChildren<DraggableSpawner>())
+            _spawnersToTrigger.AddRange(GetComponentsInChildren<DraggableSpawner>());
+            FlushSpawns();
+        }
+
+        private void FlushSpawns()
+        {
+            foreach (var spawner in _spawnersToTrigger)
             {
-                var instance = spawner.Spawn();
-                _spawnerPerInstance.Add(instance, spawner);
-                instance.OnDestroying += HandleInstanceDestroyed;
+                SpawnFrom(spawner);
             }
+
+            _spawnersToTrigger.Clear();
         }
 
         private void HandleInstanceDestroyed(DraggableObject destroyedInstance)
@@ -26,24 +32,26 @@ namespace KenneyJam2026.Spawners
             var spawner = _spawnerPerInstance[destroyedInstance];
             _spawnerPerInstance.Remove(destroyedInstance);
 
-            if (!destroyCancellationToken.IsCancellationRequested)
-            {
-                _ = DelaySpawn(Random.Range(.5f, 1), spawner, destroyCancellationToken);
-            }
+            if (_spawnersToTrigger.Count == 0) _nextSpawnTime = Time.time + Random.Range(.4f, 1f);
+            _spawnersToTrigger.Add(spawner);
         }
 
-        private async UniTask DelaySpawn(float _delay, DraggableSpawner spawner, CancellationToken cancellationToken)
+        private void Update()
         {
-            await UniTask.Delay((int)(_delay * 1000), cancellationToken: cancellationToken);
+            if (_spawnersToTrigger.Count == 0) return;
+            if (Time.time < _nextSpawnTime) return;
 
-            SpawnFrom(spawner);
+            SpawnFrom(_spawnersToTrigger[0]);
+            _spawnersToTrigger.RemoveAt(0);
+            _nextSpawnTime = Time.time + Random.Range(.4f, 1f);
         }
 
         private void SpawnFrom(DraggableSpawner fromSpawner)
         {
             var instance = fromSpawner.Spawn();
-            _spawnerPerInstance.Add(instance, fromSpawner);
             instance.OnDestroying += HandleInstanceDestroyed;
+
+            _spawnerPerInstance.Add(instance, fromSpawner);
         }
     }
 }

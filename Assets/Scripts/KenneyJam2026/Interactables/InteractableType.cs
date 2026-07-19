@@ -7,8 +7,13 @@ namespace KenneyJam2026.Interactables
     {
         [SerializeField] private Sprite[] _uiSprites;
         [SerializeField] private float _uiSpritesSpeed = 2;
+        [SerializeField] private Color _uiColor = Color.white;
         [SerializeField] private Sprite[] _uiSecondarySprites;
         [SerializeField] private float _uiSecondarySpritesSpeed = 2;
+        [SerializeField] private Color _secondaryColor = Color.white;
+
+        public Color UIColor => _uiColor;
+        public Color SecondaryColor => _secondaryColor;
 
         public bool HasCursorSprites => _uiSprites is { Length: > 0 };
 

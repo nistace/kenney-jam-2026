@@ -7,8 +7,6 @@ namespace KenneyJam2026.Spawners
     {
         [SerializeField] private DraggableObject _prefab;
 
-        public DraggableObject Prefab => _prefab;
-
         public DraggableObject Spawn() => Instantiate(_prefab, transform.position, transform.rotation);
 
         private void OnDrawGizmos()

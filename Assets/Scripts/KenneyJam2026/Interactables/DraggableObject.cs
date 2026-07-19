@@ -7,12 +7,16 @@ namespace KenneyJam2026.Interactables
 {
     public class DraggableObject : MonoBehaviour, IDraggable
     {
+        [SerializeField] private string _identifier;
         [SerializeField] private InteractableType _type;
         [SerializeField] private InteractableType _draggingInteractionType;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private GameObject[] _interactableLayerObjects;
         [SerializeField] private float _rotationStrength = 5;
         [SerializeField] private float _maxAngularVelocity = 50;
+        [SerializeField] private bool _setNotKinematicOnInteraction;
+
+        public string Identifier => _identifier;
 
         public InteractableType InteractableType => _type;
         public InteractableType DraggingInteractionType => _draggingInteractionType;
@@ -36,6 +40,11 @@ namespace KenneyJam2026.Interactables
         public void Interact(Vector3 atPosition, IDraggable heldObject)
         {
             if (heldObject != null) return;
+
+            if (_setNotKinematicOnInteraction)
+            {
+                _rigidbody.isKinematic = false;
+            }
 
             _rigidbody.useGravity = false;
         }

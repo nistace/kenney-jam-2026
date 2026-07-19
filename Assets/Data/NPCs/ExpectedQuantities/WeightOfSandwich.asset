@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WeightOfSandwich
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.NpcExpectedQuantity
   _message: {fileID: 11400000, guid: 9b59d491a2cc908418aaa383ab2e1862, type: 2}
-  _expectedQuantity: 3
+  _expectedQuantity: 0.3
   _errorMargin: 0.1

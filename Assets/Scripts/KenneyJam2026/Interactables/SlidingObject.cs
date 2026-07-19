@@ -13,6 +13,7 @@ namespace KenneyJam2026.Interactables
         [SerializeField] private GameObject[] _objectsToActivateWhileDragging;
 
         public InteractableType InteractableType => _interactableType;
+        public string ID { get; }
         public InteractableType DraggingInteractionType => _draggingInteractionType;
         private Vector3 _offsetOnInteractionStarted;
 
