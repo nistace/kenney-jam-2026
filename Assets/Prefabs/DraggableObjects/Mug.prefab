@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &400480321876678361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5006777178537426296}
+  m_Layer: 6
+  m_Name: PourOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5006777178537426296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400480321876678361}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.211, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8130635606268923293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5730867068064990811
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,8 +96,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.17
-  m_Height: 0.5088434
+  m_Radius: 0.22
+  m_Height: 0.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.35301065, z: 0}
 --- !u!1001 &2102870654514847784
@@ -137,6 +168,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4879283405752229794}
+    - targetCorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2027491145228594277}
+    - targetCorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5006777178537426296}
+    - targetCorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2446175390497219016}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       insertIndex: -1
@@ -147,6 +187,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2072062070199717877}
+    - targetCorrespondingSourceObject: {fileID: 1653554434114848445, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3926562986687863605}
   m_SourcePrefab: {fileID: 100100000, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
 --- !u!1 &854697973098178197 stripped
 GameObject:
@@ -212,6 +255,52 @@ MonoBehaviour:
   _weighingObject: {fileID: 5108025946941131229}
   _capacity: 0.3
   _currentCharge: 0
+--- !u!114 &3926562986687863605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854697973098178197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0d25d22dc24d6faa60286d15711965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Milk.MilkPourer
+  _container: {fileID: 2072062070199717877}
+  _particles: {fileID: 6361532117294081469}
+  _splashParticles: {fileID: 1582521582454023771}
+  _pourOrigin: {fileID: 5006777178537426296}
+  _tiltCurvePerContainerCharge:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0008665511
+      value: 1.0761904
+      inSlope: -0.7768635
+      outSlope: -0.7768635
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.037261665
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _flowRate: 0.1
+  _pourDirection: {x: 0, y: -1, z: 0}
+  _maxPourDistance: 2
+  _pourMask:
+    serializedVersion: 2
+    m_Bits: 705
 --- !u!114 &5108025946941131229 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6615153644919908853, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
@@ -227,6 +316,140 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7924989239265996213, guid: c7c05be43fb686f42ab07c0128cefe36, type: 3}
   m_PrefabInstance: {fileID: 2102870654514847784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3135411450564664930
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8130635606268923293}
+    m_Modifications:
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136096065854421043, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+      propertyPath: m_Name
+      value: SplashingMilk
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+--- !u!198 &1582521582454023771 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4500510981165086777, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+  m_PrefabInstance: {fileID: 3135411450564664930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2446175390497219016 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 752584461437829034, guid: b26daee1047d02e4b9ed60a00513b830, type: 3}
+  m_PrefabInstance: {fileID: 3135411450564664930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4344974684370168807
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8130635606268923293}
+    m_Modifications:
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2478
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653764088782876711, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+      propertyPath: m_Name
+      value: PouringMilk
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+--- !u!4 &2027491145228594277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2337204380235417474, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+  m_PrefabInstance: {fileID: 4344974684370168807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6361532117294081469 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7207097187681930842, guid: 33bc0fab9b612f14092eb7d1a123882d, type: 3}
+  m_PrefabInstance: {fileID: 4344974684370168807}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6705349573671198770
 PrefabInstance:

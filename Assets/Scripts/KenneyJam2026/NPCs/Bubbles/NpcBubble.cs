@@ -11,9 +11,15 @@ namespace KenneyJam2026.NPCs.Bubbles
         [SerializeField] private AnimationCurve _disappearScaleCurve;
         [SerializeField] private AnimationCurve _jiggleAngleCurve;
         [SerializeField] private float _maxRotationPerSecond = 50;
+        [SerializeField] private Transform _orientationOrigin;
 
         private Transform TargetPosition { get; set; }
-        public Transform OrientationOrigin { get; set; }
+
+        public Transform OrientationOrigin
+        {
+            get => _orientationOrigin;
+            set => _orientationOrigin = value;
+        }
         private float RandomOffset { get; set; }
 
         private Vector3 _currentVelocity;

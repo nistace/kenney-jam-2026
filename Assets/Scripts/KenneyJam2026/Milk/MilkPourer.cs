@@ -95,6 +95,8 @@ namespace KenneyJam2026.Milk
 
         private void OnDrawGizmos()
         {
+            if (_pourOrigin == null) return;
+
             Gizmos.color = Color.white;
             Gizmos.DrawLine(_pourOrigin.position, _pourOrigin.position + _pourDirection.normalized * _maxPourDistance);
         }

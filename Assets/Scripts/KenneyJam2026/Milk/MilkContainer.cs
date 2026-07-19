@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace KenneyJam2026.Milk
 {
-    [RequireComponent(typeof(WeighingObject))]
     public class MilkContainer : MonoBehaviour
     {
         [SerializeField] private WeighingObject _weighingObject;
