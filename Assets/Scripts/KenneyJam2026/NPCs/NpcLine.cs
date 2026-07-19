@@ -9,6 +9,7 @@ namespace KenneyJam2026.NPCs
 
         public NpcPositionInLine Head => _positions[0];
         public bool HasEmptySlots => _positions[^1].Owner == null;
+        public bool HasOccupiedSLots => _positions[0].Owner != null;
 
         public event Action OnHeadOwnerChanged;
 

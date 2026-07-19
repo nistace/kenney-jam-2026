@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d79debea2f4fb1954f3136d6d31b0e, type: 3}
+  m_Name: WeightOfSandwich
+  m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.Bubbles.NpcMessage
+  _delays:
+  - 0
+  - 0.3
+  _bubbles:
+  - {fileID: 4578668819990006319, guid: e1d5a129c4f40634bb6a988d9ae6bb1d, type: 3}
+  - {fileID: 4578668819990006319, guid: 88816d91181956a4aa3950351ff5d9ac, type: 3}

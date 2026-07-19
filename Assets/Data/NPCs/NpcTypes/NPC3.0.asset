@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.NpcType
   _modelPrefab: {fileID: 919132149155446097, guid: 6658130276017f748a0b74872a095fee, type: 3}
   _possibleExpectedQuantities:
-  - {fileID: 11400000, guid: 9ad2d85e35111454e85613e9f6f6c27c, type: 2}
-  - {fileID: 11400000, guid: 7f0c3111a3b15ba4098f339763ee6913, type: 2}
+  - {fileID: 11400000, guid: 883ac8bb30b93af45b92113167061589, type: 2}
+  - {fileID: 11400000, guid: cb3b4545c7aa0ea48bf9554b2810ba8b, type: 2}
+  - {fileID: 11400000, guid: 9f4d9a2804512ef4eabc8f1ced90a519, type: 2}
   _level: 3
   _movementSpeed: 5
   _scale: 2.5
-  _maxDurationInLine: 240
+  _maxDurationInLine: 999999
   _delayBeforeKnocking: 5
   _messageWhileKnocking: {fileID: 11400000, guid: 4f1e4449f22c2d74f943741b698e9087, type: 2}
-  _maxDurationKnocking: 10
+  _maxDurationKnocking: 12
   _askMilkMessage: {fileID: 11400000, guid: 311bbe3c045b2da44a9eb7e0535b2927, type: 2}
   _refuseDeliveryMessage: {fileID: 11400000, guid: 0699d2277137a8a4997aba04a1b74bbc, type: 2}
   _acceptDeliveryMessage: {fileID: 11400000, guid: 792afc496f5cc504d9092bc4a1fbcfe7, type: 2}

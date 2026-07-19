@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de33ee747ea64055a77d6c975485064d, type: 3}
-  m_Name: NPC1.2
+  m_Name: NPC2.2
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.NpcType
   _modelPrefab: {fileID: 919132149155446097, guid: f181facb9be195d48a3a5b451db36f00, type: 3}
   _possibleExpectedQuantities:
-  - {fileID: 11400000, guid: 9ad2d85e35111454e85613e9f6f6c27c, type: 2}
-  - {fileID: 11400000, guid: 7f0c3111a3b15ba4098f339763ee6913, type: 2}
-  _level: 1
+  - {fileID: 11400000, guid: 96fb1aa1e687d7a43901391d156486b7, type: 2}
+  - {fileID: 11400000, guid: de8554e19811a3a40a1ccfaa7f852456, type: 2}
+  _level: 2
   _movementSpeed: 5
   _scale: 2.5
-  _maxDurationInLine: 240
-  _delayBeforeKnocking: 5
+  _maxDurationInLine: 999999
+  _delayBeforeKnocking: 8
   _messageWhileKnocking: {fileID: 11400000, guid: 0699d2277137a8a4997aba04a1b74bbc, type: 2}
-  _maxDurationKnocking: 10
+  _maxDurationKnocking: 16
   _askMilkMessage: {fileID: 11400000, guid: 311bbe3c045b2da44a9eb7e0535b2927, type: 2}
   _refuseDeliveryMessage: {fileID: 11400000, guid: 7cc3e1d1f7d323d489f2f2877f1376a1, type: 2}
   _acceptDeliveryMessage: {fileID: 11400000, guid: d2683326acddcc848899b97fe05e2c50, type: 2}

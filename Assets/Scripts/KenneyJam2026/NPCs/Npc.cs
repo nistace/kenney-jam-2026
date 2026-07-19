@@ -50,6 +50,7 @@ namespace KenneyJam2026.NPCs
         public event Action<NpcMessage> OnMessageArticulated;
         public event Action OnMessageCancelled;
         public event Action<Npc> OnWantToLeave;
+        public event Action<Npc> OnDeliveryFulfilled;
         public event Action OnLeft;
 
         public void SetTargetPositionInLine(Vector3 targetPosition, bool firstInLine)
@@ -221,6 +222,7 @@ namespace KenneyJam2026.NPCs
 
             if (validDelivery && ChangeState(ECurrentState.AcceptDelivery))
             {
+                OnDeliveryFulfilled?.Invoke(this);
                 OnMessageArticulated?.Invoke(Type.AcceptDeliveryMessage);
             }
             else if (!validDelivery && ChangeState(ECurrentState.RefuseDelivery))

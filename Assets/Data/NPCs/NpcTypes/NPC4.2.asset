@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de33ee747ea64055a77d6c975485064d, type: 3}
   m_Name: NPC4.2
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.NpcType
-  _modelPrefab: {fileID: 919132149155446097, guid: 1303a5033241254468307ee175ff8b9b, type: 3}
+  _modelPrefab: {fileID: 919132149155446097, guid: e49cf2b5be46ae14795facef9101b97d, type: 3}
   _possibleExpectedQuantities:
-  - {fileID: 11400000, guid: 9ad2d85e35111454e85613e9f6f6c27c, type: 2}
-  - {fileID: 11400000, guid: 7f0c3111a3b15ba4098f339763ee6913, type: 2}
+  - {fileID: 11400000, guid: cbdd6b0c9d8d182489d753bfaa9814e8, type: 2}
+  - {fileID: 11400000, guid: dd1cb532ce00ae446910a77ce5f5cfb3, type: 2}
   _level: 4
   _movementSpeed: 5
   _scale: 2.5
-  _maxDurationInLine: 240
-  _delayBeforeKnocking: 5
-  _messageWhileKnocking: {fileID: 11400000, guid: 4255b6aa88f66c5449fc58b8ca82f096, type: 2}
+  _maxDurationInLine: 999999
+  _delayBeforeKnocking: 2
+  _messageWhileKnocking: {fileID: 11400000, guid: 0699d2277137a8a4997aba04a1b74bbc, type: 2}
   _maxDurationKnocking: 10
   _askMilkMessage: {fileID: 11400000, guid: 311bbe3c045b2da44a9eb7e0535b2927, type: 2}
-  _refuseDeliveryMessage: {fileID: 11400000, guid: 4255b6aa88f66c5449fc58b8ca82f096, type: 2}
-  _acceptDeliveryMessage: {fileID: 11400000, guid: d2683326acddcc848899b97fe05e2c50, type: 2}
+  _refuseDeliveryMessage: {fileID: 11400000, guid: b9356062b5a61d64d9c025e264cdf24f, type: 2}
+  _acceptDeliveryMessage: {fileID: 11400000, guid: 792afc496f5cc504d9092bc4a1fbcfe7, type: 2}
   _timeAfterHandlingDelivery: 2
-  _messageWhileCancelling: {fileID: 11400000, guid: 7cc3e1d1f7d323d489f2f2877f1376a1, type: 2}
+  _messageWhileCancelling: {fileID: 11400000, guid: 4255b6aa88f66c5449fc58b8ca82f096, type: 2}
   _cancelRequestDuration: 1

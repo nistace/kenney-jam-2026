@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c1c3a97f494d948e182fe35b7ddee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.Scales.WeighingObject
-  _weight: 1.2
+  _weight: 1
   _collisionTracker: {fileID: 4195304485015050033}
 --- !u!1 &6123992323393898290
 GameObject:

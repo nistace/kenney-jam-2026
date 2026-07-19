@@ -8,7 +8,7 @@ namespace KenneyJam2026.NPCs
     {
         [SerializeField] private GameObject _modelPrefab;
         [SerializeField] private NpcExpectedQuantity[] _possibleExpectedQuantities;
-        [SerializeField] private float _level = 1;
+        [SerializeField] private int _level = 1;
         [SerializeField] private float _movementSpeed = 2;
         [SerializeField] private float _scale = 2.5f;
 
@@ -24,7 +24,7 @@ namespace KenneyJam2026.NPCs
         [SerializeField] private float _cancelRequestDuration = 1;
 
         public GameObject ModelPrefab => _modelPrefab;
-        public float Level => _level;
+        public int Level => _level;
         public NpcMessage AskMilkMessage => _askMilkMessage;
         public float MovementSpeed => _movementSpeed;
         public float Scale => _scale;

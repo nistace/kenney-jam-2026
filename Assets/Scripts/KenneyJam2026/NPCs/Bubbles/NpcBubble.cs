@@ -6,11 +6,6 @@ namespace KenneyJam2026.NPCs.Bubbles
     public class NpcBubble : MonoBehaviour
     {
         [SerializeField] private NpcBubbleConfig _config;
-        [SerializeField] private float _damp = .1f;
-        [SerializeField] private AnimationCurve _appearScaleCurve;
-        [SerializeField] private AnimationCurve _disappearScaleCurve;
-        [SerializeField] private AnimationCurve _jiggleAngleCurve;
-        [SerializeField] private float _maxRotationPerSecond = 50;
         [SerializeField] private Transform _orientationOrigin;
 
         private Transform TargetPosition { get; set; }
@@ -20,6 +15,7 @@ namespace KenneyJam2026.NPCs.Bubbles
             get => _orientationOrigin;
             set => _orientationOrigin = value;
         }
+
         private float RandomOffset { get; set; }
 
         private Vector3 _currentVelocity;

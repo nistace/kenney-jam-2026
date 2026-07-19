@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KenneyJam2026.NPCs.NpcExpectedQuantity
   _message: {fileID: 11400000, guid: b6fe16768f0fb9041b6931aa55668c00, type: 2}
   _expectedQuantity: 0.5
+  _errorMargin: 0.04
